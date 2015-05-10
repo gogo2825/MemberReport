@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ReadTeamMemberServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -19,6 +20,9 @@ public class ReadTeamMemberServlet extends HttpServlet {
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/plain");
+		
+		String UserID = "";
+		HttpSession session = req.getSession(false);
 		
 		resp.getWriter().println("<html>");
 		resp.getWriter().println("<body>");

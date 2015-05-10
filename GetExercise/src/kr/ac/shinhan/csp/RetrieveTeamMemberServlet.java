@@ -8,6 +8,7 @@ import javax.jdo.Query;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RetrieveTeamMemberServlet extends HttpServlet {
 
@@ -18,6 +19,20 @@ public class RetrieveTeamMemberServlet extends HttpServlet {
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/plain");
+		
+		String UserID = "";
+		HttpSession session = req.getSession(false);
+		
+		if(session == null)
+		{
+			resp.getWriter().println("login이 필요합니다.");
+		}
+		
+		else
+		{
+			UserID = (String) session.getAttribute("userloginID");
+			resp.getWriter().println(UserID + "님 환영합니다.");
+		}
 		
 		resp.getWriter().println("<html>");
 		resp.getWriter().println("<body>");
