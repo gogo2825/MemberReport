@@ -16,15 +16,15 @@ public class UserLoginToken { //사용기한을 체크했을때 이 클래스에 정보를 넣어줌
 	private String token; 
 	 	 
 	@Persistent 
-	private String userAccount;
+	private String Account;
 	 	 
 	@Persistent 
 	private String expireDate;
 	
-	public UserLoginToken(String token, String userAccount, String expireDate) {
+	public UserLoginToken(String token, String Account, String expireDate) {
 		super();
 		this.token = token;
-		this.userAccount = userAccount;
+		this.Account = Account;
 		this.expireDate = expireDate;
 	}
 	
@@ -34,12 +34,10 @@ public class UserLoginToken { //사용기한을 체크했을때 이 클래스에 정보를 넣어줌
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getUserAccount() {
-		return userAccount;
+	public String getAccount() {
+		return Account;
 	}
-	public void setUserAccount(String userAccount) {
-		this.userAccount = userAccount;
-	}
+	
 	public String getExpireDate() {
 		return expireDate;
 	}

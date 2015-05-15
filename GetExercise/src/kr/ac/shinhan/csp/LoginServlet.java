@@ -1,6 +1,8 @@
 package kr.ac.shinhan.csp;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -58,12 +60,19 @@ public class LoginServlet extends HttpServlet {
 		{
 			if(termcheck==true)
 			{
-				UserLoginToken ult = new UserLoginToken(UUID.randomUUID().toString(),id,"30");
+				String token = UUID.randomUUID().toString();
+				Cookie cookie = new Cookie("login_token", token);
+				resp.addCookie(cookie);
+				
+				//save token to Database
+				Calendar now = Calendar.getInstance();
+				now.add(Calendar.DATE, 30);
+				String expireDate = now.getTime().toString();
+				UserLoginToken ult = new UserLoginToken(id, token, expireDate.toString());
+				
+			
 				pm.makePersistent(ult);
 				
-				Cookie cookie = new Cookie("log_in_id",ult.getToken());
-				cookie.setMaxAge(60*60*24*30);
-				resp.addCookie(cookie);
 				
 				HttpSession session = req.getSession(true);
 				session.setMaxInactiveInterval(30*60);
