@@ -1,0 +1,13 @@
+/DeleteMember.class
+/EntryServlet.class
+/GetExerciseServlet.class
+/LoginServlet.class
+/LogoutServlet.class
+/MyPersistentManager.class
+/ReadTeamMemberServlet.class
+/RetrieveTeamMemberServlet.class
+/SignupServlet.class
+/TeamMember.class
+/UpdateMember.class
+/UserAccount.class
+/UserLoginToken.class
